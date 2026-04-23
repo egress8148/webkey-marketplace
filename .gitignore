@@ -1,10 +1,22 @@
-﻿node_modules/
+﻿# Node / Next
+node_modules/
 .next/
-.env.local
+out/
+
+# Env files
 .env
+.env.local
+.env*.local
+
+# OS / Editor
 .DS_Store
 *.log
+.vscode/
+.idea/
 
-# 백업 폴더 제외
+# Backup folders (Vercel build exclusion)
 _backup_*/
 **/_backup_*/
+
+# Test / Coverage
+coverage/
