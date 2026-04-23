@@ -1,22 +1,13 @@
-﻿# Node / Next
-node_modules/
+﻿node_modules/
 .next/
 out/
-
-# Env files
 .env
 .env.local
 .env*.local
-
-# OS / Editor
 .DS_Store
 *.log
 .vscode/
 .idea/
-
-# Backup folders (Vercel build exclusion)
 _backup_*/
 **/_backup_*/
-
-# Test / Coverage
-coverage/
+_backup_*
