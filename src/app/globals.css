@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   WebKey DAO2 Marketplace – Premium Plus v7.2 FINAL
+   - 톤: 파스텔 (Sky · Lavender · Fuchsia)
+   - 모션: 오프드 레벨
+   - <main> 투명 처리 전제 (HomePageShell에서 bg 제거됨)
+   ===================================================================== */
+
+html, body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #1e293b;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(186, 230, 253, 0.55), transparent 60%),
+    radial-gradient(1000px 500px at 110% 10%, rgba(244, 207, 232, 0.55), transparent 55%),
+    radial-gradient(900px 500px at 50% 120%, rgba(196, 181, 253, 0.55), transparent 60%),
+    linear-gradient(135deg, #e0f2fe 0%, #f3e8ff 48%, #e0e7ff 100%) !important;
+  background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200% !important;
+  background-attachment: fixed !important;
+  animation: pp-bg-flow 22s ease-in-out infinite alternate !important;
+  position: relative;
+}
+
+@keyframes pp-bg-flow {
+  0%   { background-position:   0% 0%,  100% 0%, 50% 100%,   0% 0%; }
+  50%  { background-position:  40% 30%,  60% 40%, 50%  60%,  50% 50%; }
+  100% { background-position: 100% 70%,   0% 90%, 50%   0%, 100% 100%; }
+}
+
+button { cursor: pointer; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgba(243, 232, 255, 0.4); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #8b5cf6, #ec4899);
+  border-radius: 9999px;
+}
+::selection { background: rgba(168, 85, 247, 0.22); color: #581c87; }
+
+/* 파티클 – fixed + z-index 1로 main 위에 */
+body::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: -10% !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  background:
+    radial-gradient(3px 3px at 20% 30%, rgba(167, 139, 250, 0.85), transparent 60%),
+    radial-gradient(3px 3px at 70% 50%, rgba(236, 72, 153, 0.75), transparent 60%),
+    radial-gradient(3px 3px at 40% 80%, rgba(14, 165, 233, 0.75), transparent 60%),
+    radial-gradient(2.5px 2.5px at 85% 20%, rgba(168, 85, 247, 0.8), transparent 60%),
+    radial-gradient(2.5px 2.5px at 15% 70%, rgba(244, 114, 182, 0.75), transparent 60%),
+    radial-gradient(2.5px 2.5px at 60% 15%, rgba(56, 189, 248, 0.75), transparent 60%),
+    radial-gradient(3px 3px at 90% 75%, rgba(192, 132, 252, 0.8), transparent 60%),
+    radial-gradient(2.5px 2.5px at 35% 45%, rgba(236, 72, 153, 0.7), transparent 60%),
+    radial-gradient(2px 2px at 55% 88%, rgba(167, 139, 250, 0.75), transparent 60%),
+    radial-gradient(2px 2px at 5% 55%, rgba(244, 114, 182, 0.7), transparent 60%) !important;
+  background-repeat: repeat !important;
+  background-size: 340px 340px !important;
+  opacity: 0.9 !important;
+  animation: pp-particles-drift 40s linear infinite !important;
+}
+
+@keyframes pp-particles-drift {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { transform: translate3d(-320px, -220px, 0) rotate(360deg); }
+}
+
+/* 블룸 레이어 */
+body::after {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  background:
+    radial-gradient(400px 400px at 15% 20%, rgba(167, 139, 250, 0.35), transparent 70%),
+    radial-gradient(500px 500px at 85% 30%, rgba(244, 114, 182, 0.35), transparent 70%),
+    radial-gradient(520px 520px at 50% 90%, rgba(56, 189, 248, 0.35), transparent 70%) !important;
+  animation: pp-bloom 14s ease-in-out infinite alternate !important;
+}
+
+@keyframes pp-bloom {
+  0%   { opacity: 0.7;  transform: scale(1.00); }
+  100% { opacity: 1.00; transform: scale(1.1); }
+}
+
+/* main 강제 투명화 (HomePageShell의 Tailwind bg-gradient-to-br 방어) */
+main.min-h-screen {
+  background: transparent !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* pp-blob 클래스 */
+.pp-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(55px);
+  opacity: 0.7 !important;
+  will-change: transform;
+  animation: pp-blob-move 14s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.pp-blob-sky      { background: radial-gradient(closest-side, #60a5fa, rgba(96, 165, 250, 0) 70%); }
+.pp-blob-lavender { background: radial-gradient(closest-side, #a78bfa, rgba(167, 139, 250, 0) 70%); }
+.pp-blob-fuchsia  { background: radial-gradient(closest-side, #e879f9, rgba(232, 121, 249, 0) 70%); }
+.pp-blob-pink     { background: radial-gradient(closest-side, #f472b6, rgba(244, 114, 182, 0) 70%); }
+
+@keyframes pp-blob-move {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  25%  { transform: translate3d(50px, -35px, 0) scale(1.12); }
+  50%  { transform: translate3d(-40px, 40px, 0) scale(0.92); }
+  75%  { transform: translate3d(30px, 20px, 0) scale(1.08); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* Tailwind 블롭 (bg-*-300/20 blur-3xl) 도 활발하게 */
+[class*="blur-3xl"].rounded-full {
+  animation: pp-blob-move 16s ease-in-out infinite !important;
+  will-change: transform;
+}
+[class*="blur-3xl"].rounded-full:nth-child(2n) {
+  animation-duration: 20s !important;
+  animation-direction: alternate-reverse !important;
+}
+[class*="blur-3xl"].rounded-full:nth-child(3n) { animation-duration: 24s !important; }
+
+[class*="backdrop-blur"] {
+  backdrop-filter: blur(22px) saturate(185%);
+  -webkit-backdrop-filter: blur(22px) saturate(185%);
+}
+
+/* 그라데이션 텍스트 흐름 */
+.bg-clip-text.text-transparent {
+  background-size: 220% 220% !important;
+  animation: pp-gradient-flow 10s ease infinite !important;
+}
+
+@keyframes pp-gradient-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 카드 호버 */
+.rounded-2xl, .rounded-3xl,
+[class*="rounded-[30px]"], [class*="rounded-[32px]"],
+[class*="rounded-[34px]"], [class*="rounded-[40px]"] {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+
+[class*="rounded-2xl"][class*="border"]:hover,
+[class*="rounded-3xl"][class*="border"]:hover,
+[class*="rounded-[30px]"][class*="border"]:hover,
+[class*="rounded-[32px]"][class*="border"]:hover,
+[class*="rounded-[34px]"][class*="border"]:hover,
+[class*="rounded-[40px]"][class*="border"]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 70px -15px rgba(124, 58, 237, 0.28);
+}
+
+button[class*="rounded-[34px]"]:hover,
+button[class*="rounded-[32px]"]:hover {
+  transform: translateY(-7px) scale(1.012) !important;
+  box-shadow: 0 45px 95px -20px rgba(124, 58, 237, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* 버튼 */
+button {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+button:hover { filter: brightness(1.05) saturate(1.08); }
+button:active { transform: translateY(1px) scale(0.995); }
+
+.bg-gradient-to-r, .bg-gradient-to-br, button[class*="bg-gradient"] {
+  background-size: 200% 200% !important;
+  animation: pp-btn-shimmer 8s ease infinite !important;
+}
+@keyframes pp-btn-shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.4) 50%, transparent 80%);
+  transform: translateX(-110%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+button:hover::after { transform: translateX(110%); }
+
+/* 입력 */
+input, select, textarea {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #c084fc !important;
+  box-shadow: 0 0 0 4px rgba(192, 132, 252, 0.25), 0 8px 24px -8px rgba(217, 70, 239, 0.4) !important;
+  background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* 섹션/그리드 페이드업 */
+section { animation: pp-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+section:nth-of-type(1) { animation-delay: 0.00s; }
+section:nth-of-type(2) { animation-delay: 0.08s; }
+section:nth-of-type(3) { animation-delay: 0.16s; }
+section:nth-of-type(4) { animation-delay: 0.22s; }
+
+@keyframes pp-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+[class*="grid"] > [class*="rounded-2xl"],
+[class*="grid"] > [class*="rounded-3xl"] {
+  animation: pp-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+[class*="grid"] > *:nth-child(1) { animation-delay: 0.02s; }
+[class*="grid"] > *:nth-child(2) { animation-delay: 0.08s; }
+[class*="grid"] > *:nth-child(3) { animation-delay: 0.14s; }
+[class*="grid"] > *:nth-child(4) { animation-delay: 0.20s; }
+
+/* 스켈레톤 / 토스트 */
+.pp-skeleton {
+  background: linear-gradient(110deg, rgba(226, 232, 240, 0.7) 8%, rgba(241, 245, 249, 0.95) 18%, rgba(226, 232, 240, 0.7) 33%);
+  background-size: 200% 100%;
+  animation: pp-skeleton-shine 1.4s linear infinite;
+  border-radius: 0.75rem;
+}
+@keyframes pp-skeleton-shine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+.pp-toast { animation: pp-toast-in 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes pp-toast-in {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  h1 { line-height: 1.08 !important; }
+  h1.text-4xl, h1.text-5xl, h1.text-6xl, h1.text-7xl { font-size: 2.25rem !important; }
+  .pp-blob { opacity: 0.5 !important; filter: blur(45px); }
+  [class*="gap-6"]  { gap: 1rem !important; }
+  [class*="gap-8"]  { gap: 1.25rem !important; }
+  [class*="gap-10"] { gap: 1.5rem !important; }
+}
+
+/* 접근성 */
+*:focus-visible { outline: 3px solid #c084fc; outline-offset: 2px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[data-rk] button { border-radius: 14px !important; }
+
+.rounded-3xl[class*="border"] { position: relative; }
+.rounded-3xl[class*="border"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.9), rgba(196, 181, 253, 0.4) 40%, rgba(244, 114, 182, 0.3) 75%, rgba(255, 255, 255, 0));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+span[class*="rounded-full"] {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+span[class*="rounded-full"]:hover { transform: translateY(-1px); }
+
+/* HOTFIX v7.2 FINAL marker */

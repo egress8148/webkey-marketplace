@@ -1,0 +1,6 @@
+Add this to frontend/.env.local and restart next dev:
+
+MARKETPLACE_SESSION_SECRET=replace_with_a_random_secret_of_32_or_more_characters
+
+Example PowerShell one-liner:
+[guid]::NewGuid().ToString('N') + [guid]::NewGuid().ToString('N')
