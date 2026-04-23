@@ -7,12 +7,6 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  webpack: (config) => {
-    config.watchOptions = {
-      ignored: ['**/_backup_*/**', '**/node_modules/**'],
-    }
-    return config
-  },
 }
 
 export default nextConfig
