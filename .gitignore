@@ -4,3 +4,7 @@
 .env
 .DS_Store
 *.log
+
+# 백업 폴더 제외
+_backup_*/
+**/_backup_*/
