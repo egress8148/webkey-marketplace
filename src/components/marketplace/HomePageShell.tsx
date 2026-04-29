@@ -2211,7 +2211,7 @@ export default function HomePageShell() {
                   ✨ WebKey Commerce · Next-Gen Marketplace
                 </div>
 
-                <h1 className="text-4xl font-black tracking-[-0.06em] text-slate-900 md:text-6xl xl:text-7xl">
+                <h1 className="text-3xl sm:text-4xl font-black tracking-[-0.06em] text-slate-900 md:text-6xl xl:text-7xl leading-tight md:leading-normal">
                   <span className="bg-gradient-to-r from-violet-700 via-fuchsia-600 to-pink-500 bg-clip-text text-transparent">쇼핑의 미래,</span>
                   <br />
                   <span className="bg-gradient-to-r from-sky-600 via-violet-600 to-fuchsia-500 bg-clip-text text-transparent">WebKey Commerce</span>
@@ -2308,11 +2308,8 @@ export default function HomePageShell() {
         <section className="mb-8 grid gap-6 lg:grid-cols-2">
           <button
             onClick={() => setViewMode('buy')}
-            className="group relative overflow-hidden text-left"
+            className="group relative overflow-hidden text-left min-h-[220px] md:min-h-[300px] rounded-[24px] md:rounded-[34px] p-6 md:p-[34px]"
             style={{
-              minHeight: '300px',
-              borderRadius: '34px',
-              padding: '34px',
               background: 'linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.74) 100%)',
               backdropFilter: 'blur(20px) saturate(180%)',
               WebkitBackdropFilter: 'blur(20px) saturate(180%)',
@@ -2321,6 +2318,7 @@ export default function HomePageShell() {
               transition: 'all 0.28s ease'
             }}
           >
+          
             <div className="absolute -right-12 -top-10 h-44 w-44 rounded-full bg-sky-300/25 blur-3xl" />
             <div className="relative z-10 flex h-full flex-col justify-between">
               <div>
@@ -2350,11 +2348,8 @@ export default function HomePageShell() {
 
           <button
             onClick={() => { setViewMode('sell'); setSellTab('register') }}
-            className="group relative overflow-hidden text-left"
+            className="group relative overflow-hidden text-left min-h-[220px] md:min-h-[300px] rounded-[24px] md:rounded-[34px] p-6 md:p-[34px]"
             style={{
-              minHeight: '300px',
-              borderRadius: '34px',
-              padding: '34px',
               background: 'linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.74) 100%)',
               backdropFilter: 'blur(20px) saturate(180%)',
               WebkitBackdropFilter: 'blur(20px) saturate(180%)',
@@ -2363,6 +2358,7 @@ export default function HomePageShell() {
               transition: 'all 0.28s ease'
             }}
           >
+
             <div className="absolute -right-10 -top-8 h-44 w-44 rounded-full bg-fuchsia-300/25 blur-3xl" />
             <div className="relative z-10 flex h-full flex-col justify-between">
               <div>
@@ -4384,9 +4380,10 @@ export default function HomePageShell() {
           onClick={closeBuyModal}
         >
           <div
-            className="relative w-full max-w-lg overflow-hidden rounded-[32px] border border-purple-300/70 bg-white/95 p-7 shadow-2xl shadow-purple-300/50"
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto overflow-x-hidden rounded-[24px] md:rounded-[32px] border border-purple-300/70 bg-white/95 p-5 md:p-7 shadow-2xl shadow-purple-300/50"
             onClick={(e) => e.stopPropagation()}
           >
+        
             <div className="pointer-events-none absolute -right-14 -top-14 h-48 w-48 rounded-full bg-fuchsia-300/30 blur-3xl" />
             <div className="pointer-events-none absolute -left-12 bottom-0 h-44 w-44 rounded-full bg-sky-300/25 blur-3xl" />
 
